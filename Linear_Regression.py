@@ -311,7 +311,7 @@ def predict_risk_score(lat, lon):
 from pymongo import MongoClient
 
 # Connect to MongoDB
-client = MongoClient("mongodb+srv://roshnibeddhannan:<db_password>@wehack-cluster.i8q9nhv.mongodb.net/?retryWrites=true&w=majority&appName=WeHack-Cluster")
+client = MongoClient("mongodb+srv://roshnibeddhannan:Kiki@wehack-cluster.i8q9nhv.mongodb.net/?retryWrites=true&w=majority&appName=WeHack-Cluster")
 
 # Access database and collection
 db = client["WeHack"]

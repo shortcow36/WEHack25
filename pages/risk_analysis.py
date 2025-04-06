@@ -95,7 +95,7 @@ st.plotly_chart(fig)
 from pymongo import MongoClient
 
 # Connect
-client = MongoClient("mongodb+srv://roshnibeddhannan:<db_password>@wehack-cluster.i8q9nhv.mongodb.net/?retryWrites=true&w=majority&appName=WeHack-Cluster")
+client = MongoClient("mongodb+srv://roshnibeddhannan:Kiki@wehack-cluster.i8q9nhv.mongodb.net/?retryWrites=true&w=majority&appName=WeHack-Cluster")
 db = client["WeHack"]
 collection = db["user-A-properties"]
 
