@@ -74,6 +74,9 @@ if st.button("Register"):
 # Redirect to profile page
 if st.session_state.get("go_profile"):
     st.session_state.go_profile = False  # Reset the flag
-    st.switch_page("pages/profile.py")  # Navigate to the profile page
+    st.switch_page("pages/profile.py")  # Navigate to the profile pages
+
+
+
 
 

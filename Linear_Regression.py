@@ -1,10 +1,10 @@
 import numpy as np
 import pandas as pd
-import seaborn as sns  # for nicer plots
-sns.set(style="darkgrid")  # default style
+#import seaborn as sns  # for nicer plots
+#sns.set(style="darkgrid")  # default style
 from sklearn.model_selection import train_test_split
 import tensorflow as tf
-from matplotlib import pyplot as plt
+#from matplotlib import pyplot as plt
 
 property_data_init = pd.read_csv('Data\WeHack_DataFile - Sheet1 (1).csv', sep=',', encoding='latin-1')
 property_data = property_data_init[['Lattitude', 'Longitude', 'Crime Rate','Appreciation Rate', 'Foot Traffic Rate', 'Proximity to Infrastructure', 'Neighborhood Reputation', 'Risk Score' ]].copy()
@@ -29,16 +29,16 @@ X = property_data[['Lattitude', 'Longitude', 'Crime Rate', 'Appreciation Rate', 
 
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=1234)
 X_train, X_val, Y_train, Y_val = train_test_split(X_train, Y_train, test_size=0.25, random_state=1234)
-print(f'Shape of X_train and Y_train:\n\t{X_train.shape}, {Y_train.shape}\n')
+'''print(f'Shape of X_train and Y_train:\n\t{X_train.shape}, {Y_train.shape}\n')
 print(f'Shape of X_test and Y_test:\n\t{X_test.shape}, {Y_test.shape}\n')
-print(f'Shape of X_val and Y_val:\n\t{X_val.shape}, {Y_val.shape}\n')
+print(f'Shape of X_val and Y_val:\n\t{X_val.shape}, {Y_val.shape}\n')'''
 
 
 # YOUR CODE HERE
 from sklearn.preprocessing import StandardScaler
 # Get quantiles
 quantiles = X_train.quantile([0.25, 0.5, 0.75, 0.95])
-print(f'Quantile values of X_train:\n{quantiles}\n')
+#print(f'Quantile values of X_train:\n{quantiles}\n')
 # Get the ratios for each quantile and features
 ratios = quantiles.apply(lambda x: x / x.min(), axis=1)
 # Get the number of unique ratios for each quantile
@@ -112,8 +112,8 @@ plt.show()'''
 def bl_model(x, y_std, ystd, ymean):
     return np.mean((y_std * ystd + ymean), axis=0)
 
-print(bl_model(5, Y_train_std, ystds, ymeans))
-print(bl_model(10, Y_train_std, ystds, ymeans))
+#print(bl_model(5, Y_train_std, ystds, ymeans))
+#print(bl_model(10, Y_train_std, ystds, ymeans))
 
 
 
@@ -166,7 +166,7 @@ tf.random.set_seed(0)
 # YOUR CODE HERE
 lr = 0.0001 
 model_tf = build_model(num_features=X_train_std.shape[1], learning_rate=lr)
-print(model_tf.summary())
+#print(model_tf.summary())
 # 3. Fit the model
 # YOUR CODE HERE
 num_epochs = 5
@@ -249,23 +249,23 @@ plt.ylabel('Loss')
 plt.title(f'Model Training and Validation Loss')
 plt.grid()
 plt.show()'''
-print(f'Learned parameters of model:\nWeights:\n{model_tf.layers[0].get_weights()[0]}\nBias:\n{model_tf.layers[0].get_weights()[1]}\n')
+#print(f'Learned parameters of model:\nWeights:\n{model_tf.layers[0].get_weights()[0]}\nBias:\n{model_tf.layers[0].get_weights()[1]}\n')
 # Using -4 for early stopping callback that takes the best weights
 val_loss = h['val_loss'][-4] 
 train_loss = h['loss'][-4]
-print(f'Training Loss for final epoch:\n{train_loss}\nValidation Loss for final epoch:\n{val_loss}\n')
+#print(f'Training Loss for final epoch:\n{train_loss}\nValidation Loss for final epoch:\n{val_loss}\n')
 ab_diff = np.abs(val_loss - train_loss)
 av_loss = (val_loss + train_loss) / 2
 percent_diff = (ab_diff / av_loss) * 100
-print(f'Percentage difference between the losses observed on the training and validation datasets: {percent_diff}\n')
+#print(f'Percentage difference between the losses observed on the training and validation datasets: {percent_diff}\n')
 
 
 
 
 train_results = model_tf.evaluate(X_train_std, Y_train_std, verbose=0)
-print('Training loss:', train_results[0])
+#print('Training loss:', train_results[0])
 test_results = model_tf.evaluate(X_test_std, Y_test_std, verbose=0)
-print('Test loss:', test_results[0])
+#print('Test loss:', test_results[0])
 
 # The close similarity between the training loss and test loss indicates that 
 # the model is not overfitting, as it performs similarly on both the training 
@@ -282,3 +282,27 @@ plt.ylabel('Y_pred')
 plt.title(f'Model Labels and Predictions')
 plt.grid()
 plt.show()'''
+
+
+
+
+
+def predict_risk_score(lat, lon):
+    # Hardcoded values for the other features
+    crime_rate = 5
+    appreciation_rate = 2.5
+    foot_traffic_rate = 4
+    proximity_to_infra = 3
+    neighborhood_rep = 3.5
+
+    # Construct input vector
+    input_data = np.array([[lat, lon, crime_rate, appreciation_rate, foot_traffic_rate, proximity_to_infra, neighborhood_rep]])
+    input_scaled = xscaler.transform(input_data)
+
+    # Predict using the model
+    prediction_scaled = model_tf.predict(input_scaled)
+
+    # Reverse scaling
+    prediction = yscaler.inverse_transform(prediction_scaled)
+
+    return prediction[0][0]
