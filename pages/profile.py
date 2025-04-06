@@ -1,17 +1,3 @@
-import os
-from dotenv import load_dotenv
-from pymongo import MongoClient
-
-# Load environment variables
-load_dotenv()
-
-# Access MongoDB URI from the .env file
-MONGO_URI = os.getenv("MONGO_URI")
-
-# Connect to MongoDB
-client = MongoClient(MONGO_URI)
-db = client["your_db_name"]
-collection = db["your_collection_name"]
 
 import streamlit as st
 
