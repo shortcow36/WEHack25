@@ -90,3 +90,29 @@ fig.update_layout(
 # Display the gauge chart in Streamlit
 st.plotly_chart(fig)
 
+
+
+from pymongo import MongoClient
+
+# Connect
+client = MongoClient("mongodb+srv://roshnibeddhannan:<db_password>@wehack-cluster.i8q9nhv.mongodb.net/?retryWrites=true&w=majority&appName=WeHack-Cluster")
+db = client["WeHack"]
+collection = db["user-A-properties"]
+
+# Prepare the document
+property_doc = {
+    "first_name": st.session_state.first_name,
+    "last_name": st.session_state.last_name,
+    "email": st.session_state.contact_email,
+    "lat": st.session_state.lat,
+    "lon": st.session_state.lon,
+    "risk_score": float(risk_score)
+}
+
+# Check if user already exists by email
+existing = collection.find_one({"email": st.session_state.contact_email})
+if not existing:
+    collection.insert_one(property_doc)
+else:
+    # Optional: update existing record
+    collection.update_one({"email": st.session_state.contact_email}, {"$set": property_doc})
