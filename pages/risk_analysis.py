@@ -53,13 +53,10 @@ else:
     st.page_link("Home.py", label="🏠 Go to Home Page")
 
 
-# Example risk score (to be replaced with dynamic calculation)
-risk_score = 74  # This is a sample risk score, replace it with the actual calculation
-
 # Determine risk level based on the score
-if risk_score >= 65:
+if risk_score >= .65:
     risk_level = "High Risk"
-elif risk_score >= 25:
+elif risk_score >= .25:
     risk_level = "Medium Risk"
 else:
     risk_level = "Low Risk"
@@ -68,17 +65,17 @@ else:
 fig = go.Figure(go.Indicator(
     mode="gauge+number",
     value=risk_score,
-    title={'text': f" {risk_level}", 'font': {'size': 24, 'color': "white", 'weight' : 100}},
+    title={'text': f" {risk_level}", 'font': {'size': 24, 'color': "white"}},
     gauge={
-        'axis': {'range': [0, 100], 'tickwidth': 2, 'tickcolor': "white"},
+        'axis': {'range': [0, 1], 'tickwidth': 2, 'tickcolor': "white"},
         'bar': {'color': "#ffffff", 'thickness': 0.3},  # Color for the gauge bar
         'bgcolor': "#111827",  # Background color of the gauge
         'borderwidth': 2,
         'bordercolor': "white",
         'steps': [
-            {'range': [0, 25], 'color': "#28a745"},  # Green for low risk
-            {'range': [25, 65], 'color': "#ffc300"},  # Yellow for medium risk
-            {'range': [65, 100], 'color': "#ff5733"}  # Red for high risk
+            {'range': [0, .25], 'color': "#28a745"},  # Green for low risk
+            {'range': [.25, .65], 'color': "#ffc300"},  # Yellow for medium risk
+            {'range': [.65, 1.00], 'color': "#ff5733"}  # Red for high risk
         ]
     }
 ))
