@@ -11,7 +11,7 @@ Co-SQRD is Co-venturing and risk analysis made easy, an AI-powered tool that hel
 
 ## How we built it
 - Frontend: Developed a clean, user-centered interface using Streamlit
-- Backend: Integrated a Python-based TensorFlow model to calculate risk scores
+- Backend: Integrated a Python-based TensorFlow model to calculate risk scores (Risk Score is calculated based on crime rate, appreciation rate, foot traffic, proximity to infrastructure and neighborhood reputation. These features were chosen through market research and a feature correlation matrix).
 
 ## Challenges we ran into
 - Real estate APIs were either paywalled or too broad, and no niche-free options were available for our use case
