@@ -1,6 +1,11 @@
+
 import streamlit as st
+from Linear_Regression import predict_risk_score  # adjust path if needed
 import plotly.graph_objects as go
 
+
+
+st.set_page_config(page_title="Risk Score", page_icon="📈")
 # Inject custom CSS to change the background color of the app container
 st.markdown("""
     <style>
@@ -28,6 +33,25 @@ st.markdown("""
 
 
 st.title("Risk Score:")
+
+st.write("This is where the risk analysis will be displayed.")
+
+
+# Check if lat/lon were passed
+if "lat" in st.session_state and "lon" in st.session_state:
+    lat = st.session_state.lat
+    lon = st.session_state.lon
+    st.write(f"📍 Coordinates: {lat}, {lon}")
+
+    # Call your backend prediction function
+    risk_score = predict_risk_score(lat, lon)
+
+    # Display the result
+    st.metric(label="Estimated Risk Score", value=f"{risk_score:.2f}")
+else:
+    st.warning("Please go to the Home page and enter coordinates.")
+    st.page_link("Home.py", label="🏠 Go to Home Page")
+
 
 # Example risk score (to be replaced with dynamic calculation)
 risk_score = 74  # This is a sample risk score, replace it with the actual calculation
@@ -68,3 +92,4 @@ fig.update_layout(
 
 # Display the gauge chart in Streamlit
 st.plotly_chart(fig)
+
