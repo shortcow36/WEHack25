@@ -18,6 +18,7 @@ Co-SQRD is Co-venturing and risk analysis made easy, an AI-powered tool that hel
 - We had to collect and clean real commercial addresses for our dataset manually due to the lack of publicly available datasets for commercial property risk analysis
 - With limited time, we couldn't build or integrate a full machine-learning model for risk-scoring
 - We faced limitations in customizing the interface due to Streamlit's restricted support for CSS styling
+- MongoDB's server being down resulted in difficulties seamlessly storing user and property data
 
 ## Accomplishments that we're proud of
 - Identified and tackled a real-world gap in risk assessment for commercial properties that directly impacts real people
