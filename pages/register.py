@@ -7,10 +7,9 @@ import streamlit as st
 st.set_page_config(page_title="Register Page", page_icon="📝", initial_sidebar_state="collapsed")
 
 # Inject custom CSS to change the background color of the app container
+# Inject custom CSS to change the background color of the app container
 st.markdown("""
     <style>
-
-    
     /* Target the header container using stAppHeader */
     .stAppHeader {
         background-color: black;  /* Set the background color to black */
@@ -22,21 +21,29 @@ st.markdown("""
         color: white;
         min-height: 100vh;  /* Ensure the background takes full height */
     }
-
-    
-
+    h1#co-sqrd {
+        font-weight: 400;
+    }
+    h3#connect-to-explore-co-venture-matches-and-real-estate-insights {
+        font-weight: 300; /* Sets the font weight to 400 */
+    }
     /* Optional: Style the main content area */
     .main {
         color: white;  /* Change text color for contrast */
     }
-
     </style>
 """, unsafe_allow_html=True)
 
 
 
-# Title of the page
-st.title("Sign Up for Our App")
+# Title
+st.title("Co^SQRD")
+
+# Smaller caption
+st.markdown("### Sign Up for your Account.")
+
+# caption
+st.markdown("### Connect to explore co-venture matches and real estate insights.")
 
 
 # Input fields for registration
