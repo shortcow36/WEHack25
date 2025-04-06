@@ -97,3 +97,8 @@ with col_center:
         st.session_state.go_register = True
         st.rerun()
     st.button("Sign In")  # Placeholder for future functionality
+
+
+
+
+
