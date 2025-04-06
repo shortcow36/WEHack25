@@ -4,24 +4,37 @@ import streamlit as st
 # Page Configuration
 st.set_page_config(page_title="Landing Page", page_icon="👋", initial_sidebar_state="collapsed")
 
-# Injecting custom CSS for a linear gradient background
+# Inject custom CSS to change the background color of the app container
 st.markdown("""
     <style>
-    /* Apply background gradient to entire body */
-    body {
-        background: linear-gradient(to right, black, #111827, black);
+
+    
+    /* Target the header container using stAppHeader */
+    .stAppHeader {
+        background-color: black;  /* Set the background color to black */
+        color: white;  /* Set text color to white for contrast */
+    }
+    /* Target the app view container directly */
+    .stAppViewContainer {
+        background: linear-gradient(to bottom, black, #111827, black);
         color: white;
+        min-height: 100vh;  /* Ensure the background takes full height */
     }
 
-    /* Ensure the main area also has the gradient */
-    .block-container {
-        background: transparent;
+    /* Optional: Style the main content area */
+    .main {
+        color: white;  /* Change text color for contrast */
+    }
+
+    /* Style the title: Center and change font to Inter */
+    .stMainBlockContainer {
+        text-align: center;  /* Center the title */
     }
     </style>
 """, unsafe_allow_html=True)
 
 # Title of the page
-st.title("Welcome to Our Awesome App!")
+st.title("Co^SQRD")
 
 # Redirect to register page if needed
 if st.session_state.get("go_register"):

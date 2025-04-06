@@ -6,18 +6,38 @@ import streamlit as st
 # Page Configuration
 st.set_page_config(page_title="Register Page", page_icon="📝", initial_sidebar_state="collapsed")
 
-# Injecting custom CSS for linear gradient background
+# Inject custom CSS to change the background color of the app container
 st.markdown("""
     <style>
-    body {
-        background: linear-gradient(to right, black, #111827, black);
-        color: white;
+
+    
+    /* Target the header container using stAppHeader */
+    .stAppHeader {
+        background-color: black;  /* Set the background color to black */
+        color: white;  /* Set text color to white for contrast */
     }
+    /* Target the app view container directly */
+    .stAppViewContainer {
+        background: linear-gradient(to bottom, black, #111827, black);
+        color: white;
+        min-height: 100vh;  /* Ensure the background takes full height */
+    }
+
+    
+
+    /* Optional: Style the main content area */
+    .main {
+        color: white;  /* Change text color for contrast */
+    }
+
     </style>
 """, unsafe_allow_html=True)
 
+
+
 # Title of the page
 st.title("Sign Up for Our App")
+
 
 # Input fields for registration
 first_name = st.text_input("First Name")

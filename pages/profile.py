@@ -1,12 +1,27 @@
 import streamlit as st
 
-# Injecting custom CSS for linear gradient background
+# Inject custom CSS to change the background color of the app container
 st.markdown("""
     <style>
-    body {
-        background: linear-gradient(to right, black, #111827, black);
-        color: white;
+
+    
+    /* Target the header container using stAppHeader */
+    .stAppHeader {
+        background-color: black;  /* Set the background color to black */
+        color: white;  /* Set text color to white for contrast */
     }
+    /* Target the app view container directly */
+    .stAppViewContainer {
+        background: linear-gradient(to bottom, black, #111827, black);
+        color: white;
+        min-height: 100vh;  /* Ensure the background takes full height */
+    }
+
+    /* Optional: Style the main content area */
+    .main {
+        color: white;  /* Change text color for contrast */
+    }
+
     </style>
 """, unsafe_allow_html=True)
 
